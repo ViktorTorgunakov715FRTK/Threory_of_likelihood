@@ -1,0 +1,55 @@
+#include <iostream>
+
+const int LIMIT = 1000000;
+const int NUM = 6;
+
+bool IsTrue(const bool arr[ ]);
+double GetMiddle(const double arr[ ]);
+
+int main( ) {
+  double results[LIMIT] = {0};
+  bool check_arr[6] = {0};
+  srand((unsigned int)time(0));
+
+  bool flag = true;
+  int num = 0;
+  double counter = 0.;
+
+  for (int ind = 0; ind < LIMIT; ind++) {
+    while (flag) {
+      num = rand( ) % NUM + 1;
+      check_arr[num - 1] = true;
+      flag = IsTrue(check_arr);
+      counter++; 
+    }
+    
+    results[ind] = counter;
+    counter = 0;
+    flag = true;
+    for (int ind1 = 0; ind1 < NUM; ind1++) {
+      check_arr[ind1] = false;
+    }
+  } // end of counted for( ).
+
+  double middle = GetMiddle(results);
+  std::cout << "middle = " << middle << std::endl;
+  return EXIT_SUCCESS;
+ }
+
+bool IsTrue(const bool arr[ ]) {
+  if (arr[0] == false || arr[1] == false || arr[2] == false || arr[3] == false ||
+      arr[4] == false || arr[5] == false) {
+  	return true;
+
+  }
+  return false;
+}
+
+double GetMiddle(const double arr[ ]) {
+  double sum = 0;
+  for (int ind = 0; ind < LIMIT; ind++) {
+    sum += arr[ind];
+  }
+  sum /= LIMIT;
+  return sum;
+}
