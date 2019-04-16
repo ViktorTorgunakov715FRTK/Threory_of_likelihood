@@ -8,7 +8,7 @@ double GetMiddle(const double arr[ ]);
 
 int main( ) {
   double results[LIMIT] = {0};
-  bool check_arr[6] = {0};
+  bool check_arr[NUM] = {0};
   srand((unsigned int)time(0));
 
   bool flag = true;
